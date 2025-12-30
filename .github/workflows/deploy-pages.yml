@@ -53,4 +53,5 @@ jobs:
           echo "- style.css" >> $GITHUB_STEP_SUMMARY
           echo "- script.js" >> $GITHUB_STEP_SUMMARY
           echo "- GITHUB_PAGES.md" >> $GITHUB_STEP_SUMMARY
+          echo "- icons/ (icon16.png, icon48.png, icon128.png, icon.svg)" >> $GITHUB_STEP_SUMMARY
 

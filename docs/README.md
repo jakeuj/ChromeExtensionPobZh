@@ -9,7 +9,12 @@ docs/
 ├── index.html          # 主頁面
 ├── style.css           # CSS 樣式表
 ├── script.js           # JavaScript 互動功能
-└── GITHUB_PAGES.md     # 使用說明
+├── GITHUB_PAGES.md     # 使用說明
+└── icons/              # 圖示資源
+    ├── icon16.png
+    ├── icon48.png
+    ├── icon128.png
+    └── icon.svg
 ```
 
 ## 🌐 網站連結
