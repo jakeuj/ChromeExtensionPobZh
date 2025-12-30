@@ -51,9 +51,16 @@ PoE/
 
 ### 2. 測試功能
 
-前往測試頁面：
+前往測試頁面（支援兩種 URL 格式）：
+
+**格式 1 - Profile 頁面:**
 ```
 https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
+```
+
+**格式 2 - Builds 頁面:**
+```
+https://poe.ninja/poe2/builds/vaal/character/methanman-2640/drubringer
 ```
 
 應該會看到「**分享中文 PoB**」按鈕！
@@ -71,6 +78,9 @@ https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
 
 ## ✨ 主要功能
 
+- ✅ 支援兩種 poe.ninja URL 格式：
+  - `/poe2/profile/{username}/character/{charactername}`
+  - `/poe2/builds/{class}/character/{username}/{charactername}`
 - ✅ 在 poe.ninja 角色頁面自動注入分享按鈕
 - ✅ 一鍵擷取並上傳 PoB 代碼到編年史 API
 - ✅ 建立中文 PoB 連結（poe2db.tw）

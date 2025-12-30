@@ -17,7 +17,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://poe.ninja/poe2/profile/*/character/*"
+        "https://poe.ninja/poe2/profile/*/character/*",
+        "https://poe.ninja/poe2/builds/*/character/*"
       ],
       "js": ["content.js"],
       "css": ["styles.css"],

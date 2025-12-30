@@ -343,8 +343,13 @@ class ShareButtonController {
   }
 
   function bootstrap() {
-    // 確認是否在角色頁面
-    if (!window.location.pathname.includes('/character/')) {
+    // 確認是否在角色頁面（支援兩種 URL 格式）
+    // 格式 1: /poe2/profile/{username}/character/{charactername}
+    // 格式 2: /poe2/builds/{class}/character/{username}/{charactername}
+    const isProfilePage = window.location.pathname.includes('/profile/') && window.location.pathname.includes('/character/');
+    const isBuildsPage = window.location.pathname.includes('/builds/') && window.location.pathname.includes('/character/');
+    
+    if (!isProfilePage && !isBuildsPage) {
       return;
     }
 
@@ -357,7 +362,7 @@ class ShareButtonController {
     // 初始化
     buttonController.initialize();
 
-    console.log('[PoB Sharer] Extension initialized');
+    console.log('[PoB Sharer] Extension initialized on:', window.location.pathname);
   }
 })();
 

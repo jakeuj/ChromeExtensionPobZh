@@ -4,6 +4,9 @@ Chrome 擴充套件，在 poe.ninja 角色頁面加入「分享中文 PoB」按�
 
 ## 功能特色
 
+- ✨ 支援兩種 poe.ninja URL 格式：
+  - `/poe2/profile/{username}/character/{charactername}`
+  - `/poe2/builds/{class}/character/{username}/{charactername}`
 - ✨ 在 poe.ninja 角色頁面自動注入分享按鈕
 - 🚀 一鍵上傳 PoB 代碼到編年史 API
 - 📋 自動複製連結到剪貼簿
@@ -22,9 +25,16 @@ Chrome 擴充套件，在 poe.ninja 角色頁面加入「分享中文 PoB」按�
 
 ### 使用方式
 
-1. 前往任何 poe.ninja PoE2 角色頁面，例如：
+1. 前往任何 poe.ninja PoE2 角色頁面，支援兩種 URL 格式：
+   
+   **格式 1 - Profile 頁面:**
    ```
    https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
+   ```
+   
+   **格式 2 - Builds 頁面:**
+   ```
+   https://poe.ninja/poe2/builds/vaal/character/methanman-2640/drubringer
    ```
 
 2. 在「Import build into Path of Building」按鈕旁，會出現「分享中文 PoB」按鈕
