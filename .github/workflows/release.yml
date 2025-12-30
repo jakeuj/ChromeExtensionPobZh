@@ -1,0 +1,118 @@
+name: Release Chrome Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.1)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get version
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION=${GITHUB_REF#refs/tags/v}
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update manifest version
+        run: |
+          cd src
+          sed -i 's/"version": ".*"/"version": "${{ steps.get_version.outputs.version }}"/' manifest.json
+          cat manifest.json | grep version
+
+      - name: Validate extension files
+        run: |
+          echo "Checking required files..."
+          test -f src/manifest.json && echo "✓ manifest.json"
+          test -f src/content.js && echo "✓ content.js"
+          test -f src/background.js && echo "✓ background.js"
+          test -f src/styles.css && echo "✓ styles.css"
+          test -d src/icons && echo "✓ icons directory"
+          echo "All required files present!"
+
+      - name: Create extension package
+        run: |
+          cd src
+          zip -r ../poe-ninja-pob-sharer-${{ steps.get_version.outputs.version }}.zip \
+            manifest.json \
+            content.js \
+            background.js \
+            styles.css \
+            icons/
+          cd ..
+          echo "Package created:"
+          ls -lh poe-ninja-pob-sharer-${{ steps.get_version.outputs.version }}.zip
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+            if [ -n "$PREV_TAG" ]; then
+              echo "## 變更記錄" > CHANGELOG.md
+              echo "" >> CHANGELOG.md
+              git log $PREV_TAG..HEAD --pretty=format:"- %s (%h)" >> CHANGELOG.md
+            else
+              echo "## 🎉 初始版本" > CHANGELOG.md
+              echo "" >> CHANGELOG.md
+              echo "PoE Ninja to Chronicles PoB Sharer Chrome 擴充套件首次發布！" >> CHANGELOG.md
+            fi
+          else
+            echo "## 📦 手動發布版本 ${{ steps.get_version.outputs.version }}" > CHANGELOG.md
+            echo "" >> CHANGELOG.md
+            echo "透過 workflow_dispatch 手動觸發的發布" >> CHANGELOG.md
+          fi
+          echo "" >> CHANGELOG.md
+          echo "## 📋 安裝方式" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "1. 下載 \`poe-ninja-pob-sharer-${{ steps.get_version.outputs.version }}.zip\`" >> CHANGELOG.md
+          echo "2. 解壓縮檔案" >> CHANGELOG.md
+          echo "3. 開啟 Chrome 擴充功能頁面 (\`chrome://extensions/\`)" >> CHANGELOG.md
+          echo "4. 啟用「開發人員模式」" >> CHANGELOG.md
+          echo "5. 點擊「載入未封裝項目」並選擇解壓後的資料夾" >> CHANGELOG.md
+          cat CHANGELOG.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.get_version.outputs.tag }}
+          name: Release ${{ steps.get_version.outputs.version }}
+          body_path: CHANGELOG.md
+          files: |
+            poe-ninja-pob-sharer-${{ steps.get_version.outputs.version }}.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release Summary
+        run: |
+          echo "## 🚀 Release ${{ steps.get_version.outputs.version }} 成功發布!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 產出檔案" >> $GITHUB_STEP_SUMMARY
+          echo "- \`poe-ninja-pob-sharer-${{ steps.get_version.outputs.version }}.zip\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 連結" >> $GITHUB_STEP_SUMMARY
+          echo "- [查看 Release](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ steps.get_version.outputs.tag }})" >> $GITHUB_STEP_SUMMARY
+

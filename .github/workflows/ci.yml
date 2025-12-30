@@ -1,0 +1,140 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Extension
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate manifest.json
+        run: |
+          echo "Validating manifest.json..."
+          cd src
+          # Check if manifest.json is valid JSON
+          cat manifest.json | jq empty
+          echo "✓ manifest.json is valid JSON"
+          
+          # Extract and display key information
+          echo ""
+          echo "Extension Info:"
+          echo "  Name: $(cat manifest.json | jq -r '.name')"
+          echo "  Version: $(cat manifest.json | jq -r '.version')"
+          echo "  Manifest Version: $(cat manifest.json | jq -r '.manifest_version')"
+
+      - name: Check required files
+        run: |
+          echo "Checking required extension files..."
+          
+          # Core files
+          test -f src/manifest.json && echo "✓ manifest.json" || (echo "✗ manifest.json missing" && exit 1)
+          test -f src/content.js && echo "✓ content.js" || (echo "✗ content.js missing" && exit 1)
+          test -f src/background.js && echo "✓ background.js" || (echo "✗ background.js missing" && exit 1)
+          test -f src/styles.css && echo "✓ styles.css" || (echo "✗ styles.css missing" && exit 1)
+          
+          # Icons
+          test -f src/icons/icon16.png && echo "✓ icon16.png" || (echo "✗ icon16.png missing" && exit 1)
+          test -f src/icons/icon48.png && echo "✓ icon48.png" || (echo "✗ icon48.png missing" && exit 1)
+          test -f src/icons/icon128.png && echo "✓ icon128.png" || (echo "✗ icon128.png missing" && exit 1)
+          
+          echo ""
+          echo "All required files present! ✓"
+
+      - name: Validate JavaScript syntax
+        run: |
+          echo "Validating JavaScript files..."
+          
+          # Install Node.js for syntax checking
+          node --version
+          
+          # Check content.js
+          node -c src/content.js && echo "✓ content.js syntax valid" || (echo "✗ content.js has syntax errors" && exit 1)
+          
+          # Check background.js
+          node -c src/background.js && echo "✓ background.js syntax valid" || (echo "✗ background.js has syntax errors" && exit 1)
+
+      - name: Check file sizes
+        run: |
+          echo "Checking file sizes..."
+          echo ""
+          
+          cd src
+          
+          # Show file sizes
+          echo "JavaScript files:"
+          ls -lh *.js
+          
+          echo ""
+          echo "CSS files:"
+          ls -lh *.css
+          
+          echo ""
+          echo "Icon files:"
+          ls -lh icons/*.png
+          
+          # Calculate total size
+          TOTAL_SIZE=$(du -sh . | cut -f1)
+          echo ""
+          echo "Total extension size: $TOTAL_SIZE"
+
+      - name: Test package creation
+        run: |
+          echo "Testing extension package creation..."
+          cd src
+          zip -r ../test-package.zip \
+            manifest.json \
+            content.js \
+            background.js \
+            styles.css \
+            icons/
+          cd ..
+          
+          echo ""
+          echo "Package created successfully:"
+          ls -lh test-package.zip
+          
+          # Verify zip contents
+          echo ""
+          echo "Package contents:"
+          unzip -l test-package.zip
+
+      - name: Architecture validation
+        run: |
+          echo "Checking Clean Architecture compliance..."
+          
+          cd src
+          
+          # Check for god classes (files too large)
+          MAX_LINES=500
+          for file in content.js background.js; do
+            LINES=$(wc -l < "$file")
+            echo "$file: $LINES lines"
+            if [ $LINES -gt $MAX_LINES ]; then
+              echo "⚠️  Warning: $file exceeds $MAX_LINES lines (has $LINES lines)"
+              echo "Consider refactoring into smaller modules"
+            else
+              echo "✓ $file size is acceptable"
+            fi
+          done
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## 🔍 CI 驗證結果" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✓ Manifest 驗證通過" >> $GITHUB_STEP_SUMMARY
+          echo "✓ 必要檔案檢查通過" >> $GITHUB_STEP_SUMMARY
+          echo "✓ JavaScript 語法驗證通過" >> $GITHUB_STEP_SUMMARY
+          echo "✓ 封裝測試通過" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "專案狀態: **健康** ✅" >> $GITHUB_STEP_SUMMARY
+

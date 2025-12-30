@@ -1,5 +1,9 @@
 # PoE Ninja to Chronicles PoB Sharer
 
+![CI](https://github.com/jakeuj/PoE/workflows/CI/badge.svg)
+![Release](https://github.com/jakeuj/PoE/workflows/Release%20Chrome%20Extension/badge.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Chrome 擴充套件專案 - 在 poe.ninja 加入中文 PoB 分享按鈕
 
 ## 📦 專案結構
@@ -56,6 +60,7 @@ https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
 | [src/INSTALL.md](src/INSTALL.md) | 📋 安裝與測試指南 |
 | [src/SUMMARY.md](src/SUMMARY.md) | 📊 專案總覽 |
 | [src/ARCHITECTURE.md](src/ARCHITECTURE.md) | 🏗️ 架構設計圖 |
+| [.github/CICD.md](.github/CICD.md) | 🔄 CI/CD 自動化流程說明 |
 
 ## ✨ 主要功能
 
@@ -169,7 +174,25 @@ brew install imagemagick
 
 ## 📦 發布
 
-### 打包成 .crx
+### 自動化發布 (推薦)
+
+本專案使用 GitHub Actions 自動化 CI/CD 流程：
+
+```bash
+# 建立並推送 tag 即可自動發布
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+GitHub Actions 會自動：
+- ✅ 更新 manifest.json 版本號
+- ✅ 建立擴充套件 ZIP 檔案
+- ✅ 生成 Changelog
+- ✅ 建立 GitHub Release
+
+詳細說明請參考 [.github/CICD.md](.github/CICD.md)
+
+### 手動打包
 
 1. 到 `chrome://extensions/`
 2. 點擊「封裝擴充功能」
