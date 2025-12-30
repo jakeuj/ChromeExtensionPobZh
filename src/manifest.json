@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "PoE Ninja to Chronicles PoB Sharer",
+  "version": "1.0.0",
+  "description": "在 poe.ninja 角色頁面加入分享按鈕，建立中文 PoB 連結（編年史）",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://poe.ninja/*",
+    "https://poe2db.tw/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://poe.ninja/poe2/profile/*/character/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
+

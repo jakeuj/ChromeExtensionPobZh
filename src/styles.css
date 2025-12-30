@@ -1,0 +1,162 @@
+/**
+ * Styles for PoB Share Button
+ */
+
+.pob-share-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pob-share-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.pob-share-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pob-share-button:disabled {
+  opacity: 0.6;
+  cursor: not allowed;
+  transform: none;
+}
+
+.pob-share-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.pob-share-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Notification styles */
+.pob-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  min-width: 300px;
+  max-width: 500px;
+  padding: 16px 20px;
+  
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.pob-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pob-notification-success {
+  border-left: 4px solid #10b981;
+}
+
+.pob-notification-error {
+  border-left: 4px solid #ef4444;
+}
+
+.pob-notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 24px;
+  height: 24px;
+  
+  border-radius: 50%;
+  
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.pob-notification-success .pob-notification-icon {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.pob-notification-error .pob-notification-icon {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.pob-notification-message {
+  flex: 1;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.pob-notification-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.pob-notification-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .pob-notification {
+    background: #1f2937;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .pob-notification-message {
+    color: #f3f4f6;
+  }
+}
+
