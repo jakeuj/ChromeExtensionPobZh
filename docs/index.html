@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PoE Ninja to Chronicles PoB Sharer - Chrome 擴充套件，在 poe.ninja 加入中文 PoB 分享按鈕">
+    <title>PoE Ninja to Chronicles PoB Sharer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="src/icons/icon128.png" alt="PoE PoB Sharer Icon" class="logo-img">
+                    <h1>PoE Ninja to Chronicles PoB Sharer</h1>
+                </div>
+                <div class="header-links">
+                    <a href="https://github.com/jakeuj/PoE" class="btn btn-github" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://github.com/jakeuj/PoE/releases/latest" class="btn btn-primary">
+                        📦 下載擴充套件
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>一鍵分享中文 PoB 連結</h2>
+                    <p class="hero-subtitle">在 poe.ninja 角色頁面自動加入分享按鈕，快速建立編年史中文 PoB 連結</p>
+                    <div class="badges">
+                        <img src="https://github.com/jakeuj/PoE/workflows/CI/badge.svg" alt="CI Status">
+                        <img src="https://github.com/jakeuj/PoE/workflows/Release%20Chrome%20Extension/badge.svg" alt="Release Status">
+                        <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://github.com/jakeuj/PoE/releases/latest" class="btn btn-large btn-primary">
+                            🚀 立即下載
+                        </a>
+                        <a href="#installation" class="btn btn-large btn-secondary">
+                            📖 安裝指南
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <span class="demo-dot"></span>
+                            <span class="demo-dot"></span>
+                            <span class="demo-dot"></span>
+                        </div>
+                        <div class="demo-content">
+                            <div class="demo-button">分享中文 PoB 🔗</div>
+                            <div class="demo-text">← 自動注入按鈕</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">✨ 主要功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>自動注入按鈕</h3>
+                    <p>在 poe.ninja 角色頁面自動加入分享按鈕，無需手動操作</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>一鍵分享</h3>
+                    <p>點擊按鈕即可上傳 PoB 代碼到編年史 API，建立中文連結</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>自動複製</h3>
+                    <p>連結自動複製到剪貼簿，直接貼上即可分享</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>美觀介面</h3>
+                    <p>精心設計的 UI，支援深色模式，載入動畫流暢</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>Clean Architecture</h3>
+                    <p>遵循 SOLID 原則，程式碼結構清晰易維護</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>CI/CD 自動化</h3>
+                    <p>GitHub Actions 自動測試、打包、發布</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section class="installation" id="installation">
+        <div class="container">
+            <h2 class="section-title">📦 安裝方式</h2>
+            <div class="installation-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>下載擴充套件</h3>
+                        <p>前往 <a href="https://github.com/jakeuj/PoE/releases/latest" target="_blank">GitHub Releases</a> 下載最新版本的 ZIP 檔案</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>解壓縮檔案</h3>
+                        <p>將下載的 ZIP 檔案解壓縮到任意資料夾</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>開啟擴充功能頁面</h3>
+                        <p>在 Chrome 網址列輸入 <code>chrome://extensions/</code></p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>啟用開發人員模式</h3>
+                        <p>點擊右上角的「開發人員模式」開關</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>載入擴充套件</h3>
+                        <p>點擊「載入未封裝項目」，選擇解壓後的 <code>src</code> 資料夾</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h3>🧪 測試功能</h3>
+                <p>前往以下頁面測試擴充套件：</p>
+                <a href="https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象" 
+                   class="test-link" 
+                   target="_blank">
+                    https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
+                </a>
+                <p class="test-hint">應該會看到「<strong>分享中文 PoB</strong>」按鈕！</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture">
+        <div class="container">
+            <h2 class="section-title">🏗️ 技術架構</h2>
+            <div class="architecture-content">
+                <div class="architecture-diagram">
+                    <h3>Clean Architecture 分層</h3>
+                    <div class="layer">Presentation Layer (UI Controller)</div>
+                    <div class="arrow">↓</div>
+                    <div class="layer">Application Layer (Use Cases)</div>
+                    <div class="arrow">↓</div>
+                    <div class="layer">Domain Layer (Business Logic)</div>
+                    <div class="arrow">↑</div>
+                    <div class="layer">Infrastructure Layer (API Client, Extractors)</div>
+                </div>
+                <div class="architecture-principles">
+                    <h3>SOLID 原則</h3>
+                    <ul>
+                        <li>✅ <strong>Single Responsibility</strong> - 一個類別一個職責</li>
+                        <li>✅ <strong>Open/Closed</strong> - 開放擴展，封閉修改</li>
+                        <li>✅ <strong>Dependency Inversion</strong> - 依賴抽象不依賴具體</li>
+                    </ul>
+                    <h3>核心元件</h3>
+                    <ul>
+                        <li>📱 <code>ShareButtonController</code> - UI 控制器</li>
+                        <li>🎯 <code>SharePobUseCase</code> - 分享用例</li>
+                        <li>🔌 <code>ChroniclesApiClient</code> - API 客戶端</li>
+                        <li>📝 <code>PoeNinjaPobExtractor</code> - PoB 擷取器</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section class="documentation">
+        <div class="container">
+            <h2 class="section-title">📚 文件導覽</h2>
+            <div class="docs-grid">
+                <a href="https://github.com/jakeuj/PoE/blob/main/src/QUICKSTART.md" class="doc-card" target="_blank">
+                    <div class="doc-icon">🚀</div>
+                    <h3>快速開始</h3>
+                    <p>30 秒快速開始指南</p>
+                </a>
+                <a href="https://github.com/jakeuj/PoE/blob/main/src/README.md" class="doc-card" target="_blank">
+                    <div class="doc-icon">📖</div>
+                    <h3>完整說明</h3>
+                    <p>詳細專案文件</p>
+                </a>
+                <a href="https://github.com/jakeuj/PoE/blob/main/src/ARCHITECTURE.md" class="doc-card" target="_blank">
+                    <div class="doc-icon">🏗️</div>
+                    <h3>架構設計</h3>
+                    <p>Clean Architecture 設計圖</p>
+                </a>
+                <a href="https://github.com/jakeuj/PoE/blob/main/.github/CICD.md" class="doc-card" target="_blank">
+                    <div class="doc-icon">🔄</div>
+                    <h3>CI/CD 流程</h3>
+                    <p>自動化部署說明</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>專案資訊</h4>
+                    <ul>
+                        <li><a href="https://github.com/jakeuj/PoE" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://github.com/jakeuj/PoE/releases" target="_blank">所有版本</a></li>
+                        <li><a href="https://github.com/jakeuj/PoE/issues" target="_blank">問題回報</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>相關連結</h4>
+                    <ul>
+                        <li><a href="https://poe.ninja/" target="_blank">PoE Ninja</a></li>
+                        <li><a href="https://poe2db.tw/" target="_blank">編年史 (poe2db.tw)</a></li>
+                        <li><a href="https://pathofexile.com/" target="_blank">Path of Exile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>開發者</h4>
+                    <ul>
+                        <li><a href="https://github.com/jakeuj" target="_blank">@jakeuj</a></li>
+                        <li>遵循 Clean Architecture</li>
+                        <li>MIT License</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PoE Ninja to Chronicles PoB Sharer. Made with ❤️ for the PoE community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

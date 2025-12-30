@@ -6,10 +6,17 @@
 
 Chrome 擴充套件專案 - 在 poe.ninja 加入中文 PoB 分享按鈕
 
+🌐 **[查看專案網站](https://jakeuj.github.io/PoE/)** | 📦 **[下載最新版本](https://github.com/jakeuj/PoE/releases/latest)**
+
 ## 📦 專案結構
 
 ```
 PoE/
+├── docs/                      # GitHub Pages 網站
+│   ├── index.html            # 網站主頁
+│   ├── style.css             # 網站樣式
+│   ├── script.js             # 網站互動
+│   └── GITHUB_PAGES.md       # 網站說明
 ├── rest-api.http              # API 測試檔案（編年史 API 規格）
 ├── test-pob-code.txt          # 測試用 PoB 代碼
 ├── README.md                  # 本檔案
