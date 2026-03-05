@@ -172,6 +172,15 @@ body {
     flex-wrap: wrap;
 }
 
+.demo-screenshot {
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    display: block;
+}
+
 .demo-card {
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
