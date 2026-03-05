@@ -7,7 +7,7 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'uploadPobCode') {
     // 非同步處理，返回 true 以保持 message channel 開啟
-    handleUploadPobCode(request.pobCode)
+    handleUploadPobCode(request.pobCode, request.gameVersion)
       .then(sendResponse)
       .catch(error => {
         sendResponse({
@@ -25,8 +25,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 /**
  * 處理 PoB 代碼上傳
+ * @param {string} pobCode - PoB 代碼
+ * @param {string} [gameVersion='poe2'] - 遊戲版本：'poe1' 或 'poe2'
  */
-async function handleUploadPobCode(pobCode) {
+async function handleUploadPobCode(pobCode, gameVersion = 'poe2') {
   if (!pobCode || typeof pobCode !== 'string') {
     throw {
       message: 'Invalid PoB code',
@@ -34,8 +36,16 @@ async function handleUploadPobCode(pobCode) {
     };
   }
 
+  const isPoe1 = gameVersion === 'poe1';
+  const apiUrl = isPoe1
+    ? 'https://poedb.tw/pob/api/paste'
+    : 'https://poe2db.tw/pob/api/paste';
+  const pobBaseUrl = isPoe1
+    ? 'https://poedb.tw/tw/pob'
+    : 'https://poe2db.tw/tw/pob';
+
   try {
-    const response = await fetch('https://poe2db.tw/pob/api/paste', {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +75,7 @@ async function handleUploadPobCode(pobCode) {
       success: true,
       data: {
         hash: data.hash,
-        url: `https://poe2db.tw/tw/pob/${data.hash}`,
+        url: `${pobBaseUrl}/${data.hash}`,
         isReused: data.reused === 1
       }
     };

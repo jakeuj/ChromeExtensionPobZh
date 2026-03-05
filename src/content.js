@@ -38,7 +38,7 @@ class SharePobUseCase {
         throw new ApiError('Upload failed', 'UPLOAD_FAILED');
       }
 
-      const url = `https://poe2db.tw/tw/pob/${response.hash}`;
+      const url = response.url;
       return new PobShareResult(response.hash, url, response.reused === 1);
     } catch (error) {
       if (error instanceof ApiError) {
@@ -51,15 +51,18 @@ class SharePobUseCase {
 
 // Infrastructure Layer - API 客戶端
 class ChroniclesApiClient {
-  constructor(baseUrl = 'https://poe2db.tw') {
-    this._baseUrl = baseUrl;
+  /**
+   * @param {string} gameVersion - 'poe1' 或 'poe2'（預設 'poe2'）
+   */
+  constructor(gameVersion = 'poe2') {
+    this._gameVersion = gameVersion;
   }
 
   async uploadPobCode(pobCode) {
     // 透過 background service worker 發送請求以規避 CORS
     return new Promise((resolve, reject) => {
       chrome.runtime.sendMessage(
-        { action: 'uploadPobCode', pobCode },
+        { action: 'uploadPobCode', pobCode, gameVersion: this._gameVersion },
         (response) => {
           // 檢查是否有錯誤
           if (chrome.runtime.lastError) {
@@ -76,6 +79,7 @@ class ChroniclesApiClient {
           resolve({
             code: 200,
             hash: response.data.hash,
+            url: response.data.url,
             reused: response.data.isReused ? 1 : 0
           });
         }
@@ -93,13 +97,13 @@ class PoeNinjaPobExtractor {
       return pobInput.value;
     }
 
-    // 方法 2: 從 pob2:// 或 https://pobb.in/ 連結取得
-    const importLinks = document.querySelectorAll('a[href^="pob2://"], a[href^="https://pobb.in/"]');
+    // 方法 2: 從 pob2://, pob:// 或 https://pobb.in/ 連結取得
+    const importLinks = document.querySelectorAll('a[href^="pob2://"], a[href^="pob://"], a[href^="https://pobb.in/"]');
     for (const link of importLinks) {
       const href = link.getAttribute('href');
-      
-      // 處理 pob2:// 協議
-      if (href.startsWith('pob2://')) {
+
+      // 處理 pob2:// 或 pob:// 協議（POE2 / POE1）
+      if (href.startsWith('pob2://') || href.startsWith('pob://')) {
         // 從相鄰的 input 找
         const parent = link.parentElement;
         const input = parent?.querySelector('input[readonly]');
@@ -135,9 +139,15 @@ class PoeNinjaPobExtractor {
 
 // Presentation Layer - UI 控制器
 class ShareButtonController {
-  constructor(sharePobUseCase, pobExtractor) {
+  /**
+   * @param {SharePobUseCase} sharePobUseCase
+   * @param {PoeNinjaPobExtractor} pobExtractor
+   * @param {string} gameVersion - 'poe1' 或 'poe2'
+   */
+  constructor(sharePobUseCase, pobExtractor, gameVersion = 'poe2') {
     this._sharePobUseCase = sharePobUseCase;
     this._pobExtractor = pobExtractor;
+    this._gameVersion = gameVersion;
     this._button = null;
   }
 
@@ -155,7 +165,7 @@ class ShareButtonController {
   _waitForElement() {
     return new Promise((resolve, reject) => {
       // 先檢查元素是否已經存在
-      const importButton = document.querySelector('a[href^="pob2://"], a[href^="https://pobb.in/"]');
+      const importButton = document.querySelector('a[href^="pob2://"], a[href^="pob://"], a[href^="https://pobb.in/"]');
       if (importButton) {
         resolve();
         return;
@@ -163,7 +173,7 @@ class ShareButtonController {
 
       // 使用 MutationObserver 監聽 DOM 變化
       const observer = new MutationObserver((mutations, obs) => {
-        const button = document.querySelector('a[href^="pob2://"], a[href^="https://pobb.in/"]');
+        const button = document.querySelector('a[href^="pob2://"], a[href^="pob://"], a[href^="https://pobb.in/"]');
         if (button) {
           obs.disconnect();
           resolve();
@@ -186,16 +196,21 @@ class ShareButtonController {
 
   _createButton() {
     // 尋找合適的插入位置（在 "Import build into Path of Building" 按鈕旁）
-    // 支援新舊兩種連結格式
-    const importButton = document.querySelector('a[href^="pob2://"], a[href^="https://pobb.in/"]');
-    
+    // 支援 pob2://, pob:// 以及 pobb.in 連結格式
+    const importButton = document.querySelector('a[href^="pob2://"], a[href^="pob://"], a[href^="https://pobb.in/"]');
+
     if (!importButton) {
       console.warn('[PoB Sharer] Import button not found');
       return;
     }
 
     const container = importButton.parentElement;
-    
+
+    // 依遊戲版本決定目標網站標籤
+    const isPoe1 = this._gameVersion === 'poe1';
+    const siteLabel = isPoe1 ? 'poedb.tw' : 'poe2db.tw';
+    const gameLabel = isPoe1 ? '一代' : '二代';
+
     // 建立分享按鈕
     this._button = document.createElement('button');
     this._button.className = 'pob-share-button';
@@ -205,8 +220,8 @@ class ShareButtonController {
       </svg>
       <span>分享中文 PoB</span>
     `;
-    this._button.title = '建立編年史（poe2db.tw）中文 PoB 連結';
-    
+    this._button.title = `建立${gameLabel}中文 PoB 連結（${siteLabel}）`;
+
     container.appendChild(this._button);
   }
 
@@ -343,26 +358,30 @@ class ShareButtonController {
   }
 
   function bootstrap() {
-    // 確認是否在角色頁面（支援兩種 URL 格式）
-    // 格式 1: /poe2/profile/{username}/character/{charactername}
-    // 格式 2: /poe2/builds/{class}/character/{username}/{charactername}
-    const isProfilePage = window.location.pathname.includes('/profile/') && window.location.pathname.includes('/character/');
-    const isBuildsPage = window.location.pathname.includes('/builds/') && window.location.pathname.includes('/character/');
-    
+    // 確認是否在角色頁面（支援 POE1 / POE2 兩種遊戲版本，以及 profile / builds 兩種格式）
+    // 格式 1: /poe1|poe2/profile/{username}/character/{charactername}
+    // 格式 2: /poe1|poe2/builds/{class}/character/{username}/{charactername}
+    const path = window.location.pathname;
+    const isProfilePage = path.includes('/profile/') && path.includes('/character/');
+    const isBuildsPage = path.includes('/builds/') && path.includes('/character/');
+
     if (!isProfilePage && !isBuildsPage) {
       return;
     }
 
+    // 偵測遊戲版本
+    const gameVersion = path.includes('/poe1/') ? 'poe1' : 'poe2';
+
     // 依賴注入組裝
-    const apiClient = new ChroniclesApiClient();
+    const apiClient = new ChroniclesApiClient(gameVersion);
     const pobExtractor = new PoeNinjaPobExtractor();
     const sharePobUseCase = new SharePobUseCase(apiClient);
-    const buttonController = new ShareButtonController(sharePobUseCase, pobExtractor);
+    const buttonController = new ShareButtonController(sharePobUseCase, pobExtractor, gameVersion);
 
     // 初始化
     buttonController.initialize();
 
-    console.log('[PoB Sharer] Extension initialized on:', window.location.pathname);
+    console.log(`[PoB Sharer] Extension initialized (${gameVersion}) on:`, path);
   }
 })();
 

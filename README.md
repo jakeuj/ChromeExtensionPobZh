@@ -51,16 +51,21 @@ PoE/
 
 ### 2. 測試功能
 
-前往測試頁面（支援兩種 URL 格式）：
+前往任一角色頁面，支援 POE1 / POE2 共四種 URL 格式：
 
-**格式 1 - Profile 頁面:**
+**POE2 - Profile 頁面:**
 ```
 https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
 ```
 
-**格式 2 - Builds 頁面:**
+**POE2 - Builds 頁面:**
 ```
 https://poe.ninja/poe2/builds/vaal/character/methanman-2640/drubringer
+```
+
+**POE1 - Profile 頁面:**
+```
+https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘
 ```
 
 應該會看到「**分享中文 PoB**」按鈕！
@@ -78,12 +83,15 @@ https://poe.ninja/poe2/builds/vaal/character/methanman-2640/drubringer
 
 ## ✨ 主要功能
 
-- ✅ 支援兩種 poe.ninja URL 格式：
-  - `/poe2/profile/{username}/character/{charactername}`
-  - `/poe2/builds/{class}/character/{username}/{charactername}`
+- ✅ 同時支援 **Path of Exile 一代（POE1）** 與 **二代（POE2）**
+- ✅ 支援四種 poe.ninja URL 格式：
+  - `/poe2/profile/{username}/character/{charactername}` → poe2db.tw
+  - `/poe2/builds/{class}/character/{username}/{charactername}` → poe2db.tw
+  - `/poe1/profile/{username}/character/{charactername}` → poedb.tw
+  - `/poe1/builds/{class}/character/{username}/{charactername}` → poedb.tw
 - ✅ 在 poe.ninja 角色頁面自動注入分享按鈕
-- ✅ 一鍵擷取並上傳 PoB 代碼到編年史 API
-- ✅ 建立中文 PoB 連結（poe2db.tw）
+- ✅ 一鍵擷取並上傳 PoB 代碼到對應編年史 API
+- ✅ 建立中文 PoB 連結（POE2 → poe2db.tw，POE1 → poedb.tw）
 - ✅ 自動複製連結到剪貼簿
 - ✅ 美觀的通知提示
 - ✅ 載入動畫效果
@@ -118,18 +126,27 @@ Infrastructure Layer (API Client, Extractors)
 
 ## 🔌 API 規格
 
-### 編年史 Paste API
+### POE2 - 編年史 Paste API（poe2db.tw）
 
 ```http
 POST https://poe2db.tw/pob/api/paste
 Content-Type: application/json
 
-{
-  "content": "<PoB_CODE>"
-}
+{ "content": "<PoB_CODE>" }
 ```
+結果連結：`https://poe2db.tw/tw/pob/{hash}`
 
-### 回應
+### POE1 - 編年史 Paste API（poedb.tw）
+
+```http
+POST https://poedb.tw/pob/api/paste
+Content-Type: application/json
+
+{ "content": "<PoB_CODE>" }
+```
+結果連結：`https://poedb.tw/tw/pob/{hash}`
+
+### 回應格式（兩者相同）
 
 ```json
 {
@@ -144,11 +161,13 @@ Content-Type: application/json
 ## 🎯 使用流程
 
 ```
-1. 使用者前往 poe.ninja 角色頁面
+1. 使用者前往 poe.ninja POE1 或 POE2 角色頁面
 2. 點擊「分享中文 PoB」按鈕
 3. 自動擷取 PoB 代碼
-4. 上傳到編年史 API
-5. 建立分享連結: https://poe2db.tw/pob/{hash}
+4. 依遊戲版本上傳到對應編年史 API
+   - POE2 → https://poe2db.tw/pob/api/paste
+   - POE1 → https://poedb.tw/pob/api/paste
+5. 建立分享連結並在新分頁開啟
 6. 自動複製到剪貼簿
 7. 顯示成功通知
 8. 使用者貼上分享！
@@ -184,7 +203,8 @@ brew install imagemagick
 
 開啟 Console (F12) 查看：
 ```javascript
-[PoB Sharer] Extension initialized
+[PoB Sharer] Extension initialized (poe1) on: /poe1/profile/...
+[PoB Sharer] Extension initialized (poe2) on: /poe2/profile/...
 ```
 
 詳細除錯方法請參考 [src/INSTALL.md](src/INSTALL.md)
@@ -234,7 +254,8 @@ jakeuj
 ## 🔗 相關連結
 
 - [poe.ninja](https://poe.ninja/) - 角色資料網站
-- [編年史 (poe2db.tw)](https://poe2db.tw/) - 中文資料庫
+- [編年史 POE2 (poe2db.tw)](https://poe2db.tw/) - 二代中文資料庫
+- [編年史 POE1 (poedb.tw)](https://poedb.tw/) - 一代中文資料庫
 - [Path of Building](https://github.com/PathOfBuildingCommunity/PathOfBuilding) - Build 規劃工具
 
 ---
@@ -245,13 +266,16 @@ jakeuj
 # 1. 載入擴充套件到 Chrome
 chrome://extensions/ → 載入未封裝項目 → 選擇 src/
 
-# 2. 測試功能
+# 2. 測試功能（POE2）
 https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
+
+# 或測試 POE1
+https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘
 ```
 
-**祝你在流亡黯道 2 中玩得開心！** 🎮
+**祝你在流亡黯道中玩得開心！** 🎮
 
 ---
 
-Made with ❤️ for Path of Exile 2 Community
+Made with ❤️ for Path of Exile Community
 

@@ -14,26 +14,42 @@
 ### 2. 測試擴充套件
 
 #### 測試用角色頁面
+
+**POE2:**
 ```
 https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
+```
+**POE1:**
+```
+https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘
 ```
 
 #### 預期行為
 1. 進入上述頁面後
 2. 在「Import build into Path of Building」按鈕旁應出現紫色漸層的「分享中文 PoB」按鈕
-3. 點擊按鈕後：
+3. 將滑鼠移至按鈕可看到 tooltip 顯示「一代」或「二代」與對應網站
+4. 點擊按鈕後：
    - 按鈕顯示載入動畫
    - 自動擷取 PoB 代碼
-   - 上傳到編年史 API
+   - 上傳到對應編年史 API
+   - 自動在新分頁開啟中文 PoB 頁面
    - 右上角顯示成功通知
    - 連結已複製到剪貼簿
-4. 貼上測試（Cmd+V / Ctrl+V）
+5. 貼上測試（Cmd+V / Ctrl+V）
 
 #### 預期連結格式
+
+POE2：
 ```
-https://poe2db.tw/pob/{hash}
+https://poe2db.tw/tw/pob/{hash}
 ```
-例如：`https://poe2db.tw/pob/aqDuPGwaeq`
+例如：`https://poe2db.tw/tw/pob/aqDuPGwaeq`
+
+POE1：
+```
+https://poedb.tw/tw/pob/{hash}
+```
+例如：`https://poedb.tw/tw/pob/aqDuPGwaeq`
 
 ### 3. 除錯方法
 
@@ -44,7 +60,8 @@ https://poe2db.tw/pob/{hash}
 
 #### 預期 Console 輸出
 ```
-[PoB Sharer] Extension initialized
+[PoB Sharer] Extension initialized (poe2) on: /poe2/profile/...
+[PoB Sharer] Extension initialized (poe1) on: /poe1/profile/...
 ```
 
 #### 常見問題
@@ -57,7 +74,7 @@ https://poe2db.tw/pob/{hash}
 **問題：按鈕點擊後無反應**
 - 開啟 Console 查看錯誤訊息
 - 檢查網路連線
-- 確認 poe2db.tw 網站可正常訪問
+- 確認對應網站可正常訪問（POE2 → poe2db.tw；POE1 → poedb.tw）
 
 **問題：顯示「無法找到 PoB 代碼」**
 - 確認該角色頁面有公開 Build
@@ -82,13 +99,18 @@ const extractor = new PoeNinjaPobExtractor();
 const code = extractor.extractFromPage();
 console.log('PoB Code:', code);
 
-// 手動測試 API
-const apiClient = new ChroniclesApiClient();
-apiClient.uploadPobCode('test_code_here').then(console.log);
+// 手動測試 API（POE2）
+const apiClient2 = new ChroniclesApiClient('poe2');
+apiClient2.uploadPobCode('test_code_here').then(console.log);
+
+// 手動測試 API（POE1）
+const apiClient1 = new ChroniclesApiClient('poe1');
+apiClient1.uploadPobCode('test_code_here').then(console.log);
 ```
 
 ## 功能驗證清單
 
+### 共用驗證
 - [ ] 按鈕正確顯示在頁面上
 - [ ] 按鈕樣式正確（紫色漸層）
 - [ ] 點擊按鈕後顯示載入動畫
@@ -96,16 +118,31 @@ apiClient.uploadPobCode('test_code_here').then(console.log);
 - [ ] API 呼叫成功
 - [ ] 顯示成功通知
 - [ ] 連結已複製到剪貼簿
-- [ ] 通知中的「開啟連結」可點擊
-- [ ] 連結可正常開啟 poe2db.tw 頁面
 - [ ] 深色模式下通知樣式正確
+
+### POE2 驗證
+- [ ] 按鈕 tooltip 顯示「建立二代中文 PoB 連結（poe2db.tw）」
+- [ ] 連結可正常開啟 poe2db.tw 頁面
+
+### POE1 驗證
+- [ ] 按鈕 tooltip 顯示「建立一代中文 PoB 連結（poedb.tw）」
+- [ ] 連結可正常開啟 poedb.tw 頁面
 
 ## API 測試
 
-### 手動測試 API
+### 手動測試 API（POE2）
 
 ```bash
 curl -X POST https://poe2db.tw/pob/api/paste \
+  -H "Content-Type: application/json" \
+  -H "User-Agent: Test/1.0" \
+  -d '{"content":"test_pob_code"}'
+```
+
+### 手動測試 API（POE1）
+
+```bash
+curl -X POST https://poedb.tw/pob/api/paste \
   -H "Content-Type: application/json" \
   -H "User-Agent: Test/1.0" \
   -d '{"content":"test_pob_code"}'

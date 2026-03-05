@@ -5,7 +5,7 @@
 已成功建立 Chrome 擴充套件：**PoE Ninja to Chronicles PoB Sharer**
 
 ### 功能
-在 poe.ninja 角色頁面自動注入「分享中文 PoB」按鈕，一鍵上傳 PoB 代碼到編年史（poe2db.tw），建立中文 PoB 連結並複製到剪貼簿。
+在 poe.ninja **POE1 / POE2** 角色頁面自動注入「分享中文 PoB」按鈕，一鍵上傳 PoB 代碼到對應編年史（POE2 → poe2db.tw；POE1 → poedb.tw），建立中文 PoB 連結並複製到剪貼簿。
 
 ## 檔案清單
 
@@ -40,12 +40,13 @@ src/
 
 ### 3. Infrastructure Layer（基礎設施層）
 - `ChroniclesApiClient`: 編年史 API 客戶端
-  - API 端點：`https://poe2db.tw/pob/api/paste`
+  - POE2 端點：`https://poe2db.tw/pob/api/paste`
+  - POE1 端點：`https://poedb.tw/pob/api/paste`
   - Content-Type: `application/json`
   - Body: `{"content": "<PoB_CODE>"}`
 - `PoeNinjaPobExtractor`: PoB 代碼擷取器
   - 從頁面 DOM 擷取 PoB 代碼
-  - 支援多種擷取方法
+  - 支援多種擷取方法（`pob2://`、`pob://`、`pobb.in/`）
 
 ### 4. Presentation Layer（展示層）
 - `ShareButtonController`: UI 控制器
@@ -80,13 +81,17 @@ src/
    ↓
 3. SharePobUseCase 驗證輸入
    ↓
-4. ChroniclesApiClient 上傳到 API
+4. ChroniclesApiClient 依 gameVersion 上傳到 API
+   - POE2 → https://poe2db.tw/pob/api/paste
+   - POE1 → https://poedb.tw/pob/api/paste
    ↓
 5. 收到回應 { "code": 200, "hash": "xxxxxxxx", "reused"?: 1 }
    ↓
-6. 建立連結: https://poe2db.tw/pob/{hash}
+6. 建立連結
+   - POE2 → https://poe2db.tw/tw/pob/{hash}
+   - POE1 → https://poedb.tw/tw/pob/{hash}
    ↓
-7. 複製到剪貼簿
+7. 在新分頁開啟 + 複製到剪貼簿
    ↓
 8. 顯示成功通知
 ```
@@ -105,10 +110,13 @@ src/
 
 前往測試頁面：
 ```
+# POE2
 https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
+# POE1
+https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘
 ```
 
-應該會看到紫色漸層的「分享中文 PoB」按鈕。
+應該會看到紫色漸層的「分享中文 PoB」按鈕，tooltip 會顯示對應的遊戲版本與網站。
 
 ## 功能特色
 

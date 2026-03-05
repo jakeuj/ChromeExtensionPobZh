@@ -5,6 +5,21 @@
 格式基於 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)，
 版本號遵循 [語意化版本 2.0.0](https://semver.org/lang/zh-TW/)。
 
+## [1.2.0] - 2026-03-05
+
+### 新增 (Added)
+- ✨ 支援 **Path of Exile 一代**（poe1）頁面：
+  - `https://poe.ninja/poe1/profile/{username}/character/{charactername}`
+  - `https://poe.ninja/poe1/builds/{class}/character/{username}/{charactername}`
+- 🔗 POE1 連結轉換至 **poedb.tw**（`https://poedb.tw/tw/pob/{hash}`）
+- 🔌 新增 `pob://` 協議支援（POE1 Path of Building 使用）
+
+### 修改 (Changed)
+- 🔧 `manifest.json` 新增 `/poe1/` URL 匹配模式與 `poedb.tw` host 權限
+- 🔧 `background.js` 依 `gameVersion` 動態切換 API 端點與結果連結
+- 🔧 `content.js` 自動偵測 URL 中的 `/poe1/` 或 `/poe2/`，組裝對應元件
+- 🔧 按鈕 tooltip 依版本顯示「一代」或「二代」及對應網站
+
 ## [1.1.0] - 2024-12-30
 
 ### 新增 (Added)
@@ -44,28 +59,38 @@
 
 ## URL 格式說明
 
-### v1.1.0+ 支援的 URL 格式
+### v1.2.0+ 支援的 URL 格式
 
-#### 1. Profile 頁面格式
+#### POE2 - Profile 頁面
 ```
 https://poe.ninja/poe2/profile/{username}/character/{charactername}
 ```
-範例：
-```
-https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
-```
+範例：`https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象`
+→ 分享至：`https://poe2db.tw/tw/pob/{hash}`
 
-#### 2. Builds 頁面格式
+#### POE2 - Builds 頁面
 ```
 https://poe.ninja/poe2/builds/{class}/character/{username}/{charactername}
 ```
-範例：
+範例：`https://poe.ninja/poe2/builds/vaal/character/methanman-2640/drubringer`
+→ 分享至：`https://poe2db.tw/tw/pob/{hash}`
+
+#### POE1 - Profile 頁面
 ```
-https://poe.ninja/poe2/builds/vaal/character/methanman-2640/drubringer
+https://poe.ninja/poe1/profile/{username}/character/{charactername}
 ```
+範例：`https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘`
+→ 分享至：`https://poedb.tw/tw/pob/{hash}`
+
+#### POE1 - Builds 頁面
+```
+https://poe.ninja/poe1/builds/{class}/character/{username}/{charactername}
+```
+→ 分享至：`https://poedb.tw/tw/pob/{hash}`
 
 ---
 
+[1.2.0]: https://github.com/jakeuj/ChromeExtensionPobZh/releases/tag/v1.2.0
 [1.1.0]: https://github.com/jakeuj/ChromeExtensionPobZh/releases/tag/v1.1.0
 [1.0.0]: https://github.com/jakeuj/ChromeExtensionPobZh/releases/tag/v1.0.0
 
