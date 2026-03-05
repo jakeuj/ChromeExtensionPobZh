@@ -2,7 +2,8 @@
   "manifest_version": 3,
   "name": "PoE Ninja to Chronicles PoB Sharer",
   "version": "1.2.0",
-  "description": "在 poe.ninja 角色頁面加入分享按鈕，建立中文 PoB 連結（編年史）",
+  "description": "Adds a Share PoB button on poe.ninja for Path of Exile 1 & 2. Uploads PoB code to Chronicles and copies the share link to clipboard.",
+  "homepage_url": "https://poe.jakeuj.com/",
   "permissions": [
     "activeTab",
     "storage"
