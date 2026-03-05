@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PoE Ninja to Chronicles PoB Sharer",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Adds a Share PoB button on poe.ninja for Path of Exile 1 & 2. Uploads PoB code to Chronicles and copies the share link to clipboard.",
   "homepage_url": "https://poe.jakeuj.com/",
 

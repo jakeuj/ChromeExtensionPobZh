@@ -5,6 +5,13 @@
 格式基於 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.0.0/)，
 版本號遵循 [語意化版本 2.0.0](https://semver.org/lang/zh-TW/)。
 
+## [1.2.1] - 2026-03-06
+
+### 修改 (Changed)
+- 🔧 移除未使用的 `activeTab` 與 `storage` 權限，符合商店最小權限原則
+- 🔧 新增 `homepage_url` 指向官方說明頁面
+- 🔧 更新擴充套件描述（英文，132 字元）
+
 ## [1.2.0] - 2026-03-05
 
 ### 新增 (Added)
