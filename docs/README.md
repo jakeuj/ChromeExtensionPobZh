@@ -9,6 +9,9 @@ docs/
 ├── index.html          # 主頁面
 ├── style.css           # CSS 樣式表
 ├── script.js           # JavaScript 互動功能
+├── sitemap.xml         # 搜尋引擎 sitemap
+├── robots.txt          # 爬蟲規則與 sitemap 位置
+├── privacy.html        # 隱私權原則
 ├── GITHUB_PAGES.md     # 使用說明
 └── icons/              # 圖示資源
     ├── icon16.png
@@ -21,8 +24,13 @@ docs/
 
 部署後可透過以下連結存取：
 ```
-https://jakeuj.github.io/PoE/
+https://poe.jakeuj.com/
 ```
+
+## 🧩 安裝連結
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
 
 ## 🚀 部署方式
 
@@ -81,6 +89,7 @@ git push origin main
 - 主頁面 HTML 結構
 - 包含 7 個主要區塊
 - 響應式設計
+- 主推 Chrome Web Store 與 Microsoft Edge Add-ons 安裝
 
 ### style.css
 - PoE 風格暗色主題
@@ -97,6 +106,10 @@ git push origin main
 - 設定步驟
 - 常見問題
 
+### sitemap.xml / robots.txt
+- `sitemap.xml` 列出正式 FQDN 頁面
+- `robots.txt` 允許索引並指向 `https://poe.jakeuj.com/sitemap.xml`
+
 ## 🔗 相關文件
 
 - [完整設定指南](../.github/GITHUB_PAGES_SETUP.md)
@@ -108,11 +121,10 @@ git push origin main
 - **部署方式**: GitHub Actions
 - **觸發條件**: Push 到 main 分支，修改 docs/ 內容
 - **建置工具**: 無需建置，直接部署靜態檔案
-- **自訂網域**: 未設定（可選）
+- **自訂網域**: `poe.jakeuj.com`
 
 ---
 
 **建立日期**: 2025-12-30  
 **維護者**: @jakeuj  
-**網站**: https://jakeuj.github.io/PoE/
-
+**網站**: https://poe.jakeuj.com/

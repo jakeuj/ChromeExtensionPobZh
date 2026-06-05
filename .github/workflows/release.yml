@@ -86,11 +86,13 @@ jobs:
           echo "" >> CHANGELOG.md
           echo "## 📋 安裝方式" >> CHANGELOG.md
           echo "" >> CHANGELOG.md
-          echo "1. 下載 \`poe-ninja-pob-sharer-${{ steps.get_version.outputs.version }}.zip\`" >> CHANGELOG.md
-          echo "2. 解壓縮檔案" >> CHANGELOG.md
-          echo "3. 開啟 Chrome 擴充功能頁面 (\`chrome://extensions/\`)" >> CHANGELOG.md
-          echo "4. 啟用「開發人員模式」" >> CHANGELOG.md
-          echo "5. 點擊「載入未封裝項目」並選擇解壓後的資料夾" >> CHANGELOG.md
+          echo "一般使用者請優先透過瀏覽器商店安裝：" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "- Chrome Web Store: https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW" >> CHANGELOG.md
+          echo "- Microsoft Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng" >> CHANGELOG.md
+          echo "- 官方網站: https://poe.jakeuj.com/" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "GitHub Release ZIP 僅供開發測試、離線驗證或商店不可用時備用。" >> CHANGELOG.md
           cat CHANGELOG.md
 
       - name: Create GitHub Release
@@ -115,4 +117,3 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🔗 連結" >> $GITHUB_STEP_SUMMARY
           echo "- [查看 Release](${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ steps.get_version.outputs.tag }})" >> $GITHUB_STEP_SUMMARY
-

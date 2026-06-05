@@ -205,10 +205,10 @@ Console 記錄詳細錯誤
 ## 目錄結構
 
 ```
-PoE/
+ChromeExtensionPobZh/
 ├── rest-api.http              # API 測試檔案
 ├── test-pob-code.txt          # 測試用 PoB 代碼
-└── src/                       # ← Chrome 擴充套件
+└── src/                       # ← Chrome / Edge 擴充套件
     ├── manifest.json          # 擴充套件設定
     ├── content.js             # 主要邏輯（Clean Architecture）
     ├── styles.css             # UI 樣式
@@ -241,4 +241,3 @@ PoE/
 ✅ **可讀性**
 - 程式碼結構清晰
 - 易於理解與協作
-

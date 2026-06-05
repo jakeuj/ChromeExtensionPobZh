@@ -9,17 +9,17 @@ git commit -m "feat: add GitHub Pages website"
 git push origin main
 
 # 2️⃣ 啟用 GitHub Pages
-# 前往 https://github.com/jakeuj/PoE/settings/pages
+# 前往 https://github.com/jakeuj/ChromeExtensionPobZh/settings/pages
 # Source 選擇: GitHub Actions
 
 # 3️⃣ 查看部署狀態
-# https://github.com/jakeuj/PoE/actions
+# https://github.com/jakeuj/ChromeExtensionPobZh/actions
 ```
 
 ## 🌐 網站連結
 
 ```
-https://jakeuj.github.io/PoE/
+https://poe.jakeuj.com/
 ```
 
 ## 📁 檔案清單
@@ -29,6 +29,8 @@ https://jakeuj.github.io/PoE/
 | `docs/index.html` | 13 KB | 主頁面 HTML |
 | `docs/style.css` | 10 KB | CSS 樣式表 |
 | `docs/script.js` | 4 KB | JavaScript 互動 |
+| `docs/sitemap.xml` | - | 搜尋引擎 sitemap |
+| `docs/robots.txt` | - | 爬蟲規則與 sitemap 位置 |
 | `.github/workflows/deploy-pages.yml` | - | 自動部署 |
 | `docs/GITHUB_PAGES.md` | 3 KB | 詳細文件 |
 | `docs/README.md` | - | docs 資料夾說明 |
@@ -44,7 +46,7 @@ https://jakeuj.github.io/PoE/
 ### 區塊
 - 🎯 **Hero** - 主介紹 + Demo 展示
 - ✨ **Features** - 6 大功能特色
-- 📦 **Installation** - 5 步驟安裝指南
+- 📦 **Installation** - Chrome / Edge 商店安裝入口
 - 🏗️ **Architecture** - Clean Architecture 圖表
 - 📚 **Documentation** - 文件連結
 - 📞 **Footer** - 相關資源
@@ -148,11 +150,14 @@ git push
 在 `index.html` 的 `</head>` 前加入 GA 程式碼
 
 ### SEO 優化
-已包含基本 meta tags，可選加入 Open Graph / Twitter Card
+已包含 canonical、Open Graph、Twitter Card、sitemap.xml 與 robots.txt
 
 ---
 
-**建立日期**: 2025-12-30  
-**網站**: https://jakeuj.github.io/PoE/  
-**Repository**: https://github.com/jakeuj/PoE
+**建立日期**: 2025-12-30
 
+**網站**: https://poe.jakeuj.com/
+
+**Repository**: https://github.com/jakeuj/ChromeExtensionPobZh
+
+**安裝**: [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW) / [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)

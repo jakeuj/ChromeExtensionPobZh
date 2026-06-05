@@ -2,10 +2,21 @@
 
 ## 安裝步驟
 
-### 1. 安裝 Chrome 擴充套件
+### 1. 推薦：從瀏覽器商店安裝
 
-1. 開啟 Chrome 瀏覽器
-2. 在網址列輸入：`chrome://extensions/`
+一般使用者建議直接從商店安裝，免手動載入：
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+
+官方網站：[https://poe.jakeuj.com/](https://poe.jakeuj.com/)
+
+### 開發者備用：本機載入
+
+此方式僅供開發測試、除錯或商店不可用時使用。
+
+1. 開啟 Chrome 或 Edge
+2. 在網址列輸入：`chrome://extensions/` 或 `edge://extensions/`
 3. 開啟右上角的「開發人員模式」開關
 4. 點擊「載入未封裝項目」按鈕
 5. 選擇 `src` 資料夾（包含 manifest.json 的資料夾）
@@ -168,15 +179,14 @@ curl -X POST https://poedb.tw/pob/api/paste \
 
 ## 下一步
 
-如需打包成 .crx 檔案分發：
+一般使用者請優先透過 Chrome Web Store 或 Microsoft Edge Add-ons 安裝。以下流程僅供開發者備用。
+
+如需打包成 .crx 檔案測試：
 1. 在 `chrome://extensions/` 點擊「封裝擴充功能」
 2. 選擇 `src` 資料夾
-3. 產生 .crx 檔案
-4. 分享給其他使用者
+3. 產生 .crx 檔案供本機或測試環境使用
 
-或上傳到 Chrome Web Store：
-1. 註冊 Chrome Web Store 開發者帳號
-2. 準備宣傳圖片和說明
-3. 上傳擴充套件
-4. 等待審核
+公開安裝入口：
 
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)

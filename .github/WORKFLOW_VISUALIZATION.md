@@ -92,8 +92,8 @@
                           ├─ Changelog
                           └─ Release Notes
 
-3. 使用者下載                            👥 用戶可下載
-   從 GitHub Releases    ─────→          安裝擴充套件
+3. 開發者下載                            🛠️ 開發者備用
+   從 GitHub Releases    ─────→          離線測試 ZIP
 ```
 
 ## 🎯 版本號策略
@@ -183,7 +183,7 @@ Repository Settings 必要設定：
 ```
 查看執行狀態：
 ├─ GitHub Actions 頁面
-│  https://github.com/jakeuj/PoE/actions
+│  https://github.com/jakeuj/ChromeExtensionPobZh/actions
 │
 ├─ 徽章狀態（README.md）
 │  ![CI](https://github.com/.../workflows/CI/badge.svg)
@@ -220,19 +220,22 @@ Repository Settings 必要設定：
    ├─ 使用 Chrome Web Store API
    └─ 自動提交審核
 
-2. 多瀏覽器支援
+2. 自動發布到 Microsoft Edge Add-ons
+   ├─ 使用 Edge Add-ons 發布流程
+   └─ 同步維護商店版本
+
+3. 多瀏覽器支援
    ├─ Firefox Add-on
-   ├─ Edge Extension
+   ├─ Edge Add-ons
    └─ 同步發布到多個商店
 
-3. 自動化測試
+4. 自動化測試
    ├─ 單元測試（Jest）
    ├─ E2E 測試（Puppeteer）
    └─ 視覺回歸測試
 
-4. 程式碼品質檢查
+5. 程式碼品質檢查
    ├─ ESLint
    ├─ Prettier
    └─ SonarQube
 ```
-

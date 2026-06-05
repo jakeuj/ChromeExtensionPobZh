@@ -68,7 +68,13 @@ git push origin v1.0.1
 1. **Release 頁面**：包含版本資訊和變更記錄
 2. **ZIP 檔案**：`poe-ninja-pob-sharer-{version}.zip`
    - 包含所有擴充套件檔案
-   - 可直接用於安裝
+   - 供開發者測試、離線驗證或商店不可用時備用
+
+一般使用者請優先透過公開商店安裝：
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+- [官方網站](https://poe.jakeuj.com/)
 
 ---
 
@@ -115,8 +121,8 @@ unzip -l ../poe-ninja-pob-sharer-test.zip
 在 README.md 中加入狀態徽章：
 
 ```markdown
-![CI](https://github.com/jakeuj/PoE/workflows/CI/badge.svg)
-![Release](https://github.com/jakeuj/PoE/workflows/Release%20Chrome%20Extension/badge.svg)
+![CI](https://github.com/jakeuj/ChromeExtensionPobZh/workflows/CI/badge.svg)
+![Release](https://github.com/jakeuj/ChromeExtensionPobZh/workflows/Release%20Chrome%20Extension/badge.svg)
 ```
 
 ---
@@ -163,16 +169,16 @@ git commit -m "docs: update README [skip ci]"
 
 ## 📚 進階配置
 
-### 自動發布到 Chrome Web Store
+### 自動發布到瀏覽器商店
 
-若要自動發布到 Chrome Web Store，需要：
+若要自動發布到 Chrome Web Store 或 Microsoft Edge Add-ons，需要：
 
 1. 取得 Chrome Web Store API 憑證
 2. 在 Repository Secrets 中加入：
    - `CHROME_CLIENT_ID`
    - `CHROME_CLIENT_SECRET`
    - `CHROME_REFRESH_TOKEN`
-3. 修改 `release.yml` 加入發布步驟
+3. 依目標商店修改 `release.yml` 加入發布步驟
 
 詳細說明：[Chrome Web Store API](https://developer.chrome.com/docs/webstore/using_webstore_api/)
 
@@ -208,4 +214,3 @@ git commit -m "docs: update README [skip ci]"
 4. 提交 Pull Request
 
 CI 會自動驗證您的變更！
-

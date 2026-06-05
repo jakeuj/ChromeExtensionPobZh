@@ -113,6 +113,6 @@ window.addEventListener('load', () => {
 // Console Easter Egg
 console.log('%c🎮 PoE Ninja to Chronicles PoB Sharer', 'font-size: 24px; color: #af6025; font-weight: bold;');
 console.log('%c⚡ Built with Clean Architecture', 'font-size: 14px; color: #d4923f;');
-console.log('%c📦 GitHub: https://github.com/jakeuj/PoE', 'font-size: 12px; color: #888;');
+console.log('%c📦 GitHub: https://github.com/jakeuj/ChromeExtensionPobZh', 'font-size: 12px; color: #888;');
 console.log('%c💡 正在尋找開發者？查看我們的架構設計！', 'font-size: 12px; color: #888;');
 

@@ -2,15 +2,12 @@
 
 ## 30 秒快速安裝
 
-### 1️⃣ 載入擴充套件
-```
-1. 開啟 Chrome
-2. 輸入: chrome://extensions/
-3. 啟用「開發人員模式」（右上角開關）
-4. 點擊「載入未封裝項目」
-5. 選擇 src 資料夾
-6. 完成！✅
-```
+### 1️⃣ 從瀏覽器商店安裝
+
+- Chrome / Chromium 瀏覽器：[Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- Microsoft Edge：[Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+
+官方網站：[https://poe.jakeuj.com/](https://poe.jakeuj.com/)
 
 ### 2️⃣ 立即測試
 前往測試頁面：
@@ -80,7 +77,7 @@ src/
 - **原則**: SOLID
 - **語言**: Vanilla JavaScript (ES6+)
 - **平台**: Chrome Extension Manifest V3
-- **API**: poe2db.tw Chronicles API
+- **API**: poe2db.tw / poedb.tw Chronicles API
 
 ---
 
@@ -151,8 +148,9 @@ src/
 - 🔄 重新整理擴充套件即可測試
 
 ### 想發布？
-- 📦 打包成 .crx 檔案
-- 🌐 上傳到 Chrome Web Store
+- 🛒 維護 Chrome Web Store 上架資訊
+- 🧩 維護 Microsoft Edge Add-ons 上架資訊
+- 📦 需要開發測試時再使用 GitHub Releases 或本機打包
 
 ---
 
@@ -164,5 +162,4 @@ src/
 
 ---
 
-Made with ❤️ for Path of Exile 2 Community
-
+Made with ❤️ for Path of Exile Community

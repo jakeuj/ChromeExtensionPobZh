@@ -1,6 +1,8 @@
 # PoE Ninja to Chronicles PoB Sharer
 
-Chrome 擴充套件，在 poe.ninja 角色頁面加入「分享中文 PoB」按鈕，一鍵建立中文 PoB 連結（POE2 → poe2db.tw，POE1 → poedb.tw）。
+Chrome / Microsoft Edge 擴充套件，在 poe.ninja 角色頁面加入「分享中文 PoB」按鈕，一鍵建立中文 PoB 連結（POE2 → poe2db.tw，POE1 → poedb.tw）。
+
+官方網站：[https://poe.jakeuj.com/](https://poe.jakeuj.com/)
 
 ## 功能特色
 
@@ -19,9 +21,16 @@ Chrome 擴充套件，在 poe.ninja 角色頁面加入「分享中文 PoB」按�
 
 ## 安裝方式
 
-### 開發者模式安裝
+### 推薦：瀏覽器商店安裝
 
-1. 開啟 Chrome 瀏覽器，前往 `chrome://extensions/`
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+
+### 開發者備用安裝
+
+此方式僅供本機開發測試或商店不可用時使用。
+
+1. 開啟 Chrome 或 Edge，前往 `chrome://extensions/` 或 `edge://extensions/`
 2. 開啟右上角的「開發人員模式」
 3. 點擊「載入未封裝項目」
 4. 選擇 `src` 資料夾
@@ -182,8 +191,10 @@ jakeuj
 
 ## 相關連結
 
+- [官方網站](https://poe.jakeuj.com/)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
 - [poe.ninja](https://poe.ninja/)
 - [編年史 POE2 (poe2db.tw)](https://poe2db.tw/)
 - [編年史 POE1 (poedb.tw)](https://poedb.tw/)
 - [Path of Building](https://github.com/PathOfBuildingCommunity/PathOfBuilding)
-

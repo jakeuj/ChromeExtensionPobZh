@@ -1,17 +1,17 @@
 # PoE Ninja to Chronicles PoB Sharer
 
-![CI](https://github.com/jakeuj/PoE/workflows/CI/badge.svg)
-![Release](https://github.com/jakeuj/PoE/workflows/Release%20Chrome%20Extension/badge.svg)
+![CI](https://github.com/jakeuj/ChromeExtensionPobZh/workflows/CI/badge.svg)
+![Release](https://github.com/jakeuj/ChromeExtensionPobZh/workflows/Release%20Chrome%20Extension/badge.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Chrome 擴充套件專案 - 在 poe.ninja 加入中文 PoB 分享按鈕
+Chrome / Microsoft Edge 擴充套件專案 - 在 poe.ninja 加入中文 PoB 分享按鈕
 
-🌐 **[查看專案網站](https://jakeuj.github.io/PoE/)** | 📦 **[下載最新版本](https://github.com/jakeuj/PoE/releases/latest)**
+🌐 **[官方網站](https://poe.jakeuj.com/)** | 🛒 **[Chrome 商店安裝](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)** | 🧩 **[Edge Add-ons 安裝](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)**
 
 ## 📦 專案結構
 
 ```
-PoE/
+ChromeExtensionPobZh/
 ├── docs/                      # GitHub Pages 網站
 │   ├── index.html            # 網站主頁
 │   ├── style.css             # 網站樣式
@@ -41,13 +41,12 @@ PoE/
 
 ### 1. 安裝擴充套件
 
-```bash
-# 1. 開啟 Chrome 瀏覽器
-# 2. 在網址列輸入: chrome://extensions/
-# 3. 啟用「開發人員模式」（右上角）
-# 4. 點擊「載入未封裝項目」
-# 5. 選擇 src 資料夾
-```
+推薦直接從瀏覽器商店安裝，免手動載入：
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+
+官方網站與最新說明請見 [https://poe.jakeuj.com/](https://poe.jakeuj.com/)。
 
 ### 2. 測試功能
 
@@ -229,19 +228,21 @@ GitHub Actions 會自動：
 
 詳細說明請參考 [.github/CICD.md](.github/CICD.md)
 
-### 手動打包
+### 開發者備用打包
+
+商店安裝是一般使用者的主要入口；以下方式僅供開發測試或商店不可用時使用。
 
 1. 到 `chrome://extensions/`
 2. 點擊「封裝擴充功能」
 3. 選擇 `src` 資料夾
 4. 產生 .crx 檔案供分發
 
-### Chrome Web Store
+### 瀏覽器商店
 
-1. 註冊開發者帳號
-2. 準備宣傳素材
-3. 上傳 src 資料夾內容
-4. 等待審核
+主要公開安裝入口：
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
 
 ## 📝 授權
 
@@ -253,6 +254,9 @@ jakeuj
 
 ## 🔗 相關連結
 
+- [官方網站](https://poe.jakeuj.com/) - 專案首頁、安裝入口與隱私權原則
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW) - Chrome / Chromium 瀏覽器安裝
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng) - Microsoft Edge 安裝
 - [poe.ninja](https://poe.ninja/) - 角色資料網站
 - [編年史 POE2 (poe2db.tw)](https://poe2db.tw/) - 二代中文資料庫
 - [編年史 POE1 (poedb.tw)](https://poedb.tw/) - 一代中文資料庫
@@ -262,20 +266,12 @@ jakeuj
 
 ## 🎉 立即開始
 
-```bash
-# 1. 載入擴充套件到 Chrome
-chrome://extensions/ → 載入未封裝項目 → 選擇 src/
-
-# 2. 測試功能（POE2）
-https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象
-
-# 或測試 POE1
-https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘
-```
+1. 從 [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW) 或 [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng) 安裝。
+2. 前往 POE2 測試頁面：`https://poe.ninja/poe2/profile/jakeuj-2332/character/泰坦燃燒大象`
+3. 或前往 POE1 測試頁面：`https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘`
 
 **祝你在流亡黯道中玩得開心！** 🎮
 
 ---
 
 Made with ❤️ for Path of Exile Community
-

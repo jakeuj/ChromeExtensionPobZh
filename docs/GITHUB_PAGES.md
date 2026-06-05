@@ -4,18 +4,25 @@
 
 部署完成後，網站將可透過以下連結存取：
 ```
-https://jakeuj.github.io/PoE/
+https://poe.jakeuj.com/
 ```
+
+## 🧩 安裝連結
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
 
 ## 📁 檔案結構
 
 ```
-PoE/
+docs/
 ├── index.html          # 主頁面
 ├── style.css           # 樣式表
 ├── script.js           # JavaScript 互動
-└── src/
-    └── icons/          # 圖示資源
+├── sitemap.xml         # 搜尋引擎 sitemap
+├── robots.txt          # 爬蟲規則
+├── privacy.html        # 隱私權原則
+└── icons/              # 圖示資源
 ```
 
 ## 🚀 自動部署
@@ -47,7 +54,7 @@ git push origin main
 
 ### 3. 檢查部署狀態
 
-前往 [GitHub Actions](https://github.com/jakeuj/PoE/actions) 查看部署進度。
+前往 [GitHub Actions](https://github.com/jakeuj/ChromeExtensionPobZh/actions) 查看部署進度。
 
 ## 🎨 頁面特色
 
@@ -61,7 +68,7 @@ git push origin main
 ### 區塊內容
 - 🎯 Hero Section - 主要介紹
 - ✨ Features - 功能特色
-- 📦 Installation - 安裝步驟
+- 📦 Installation - Chrome / Edge 商店安裝入口
 - 🏗️ Architecture - 技術架構
 - 📚 Documentation - 文件連結
 - 📞 Footer - 相關資源
@@ -70,7 +77,8 @@ git push origin main
 
 ```bash
 # 使用 Python 啟動本地伺服器
-cd /Users/jakeuj/Documents/Projects/PoE
+cd /Users/jakeuj/Documents/GitHub/ChromeExtensionPobZh
+cd docs
 python3 -m http.server 8000
 
 # 或使用 Node.js
@@ -129,8 +137,10 @@ open http://localhost:8000
 ### SEO 優化
 - ✅ 已加入 meta description
 - ✅ 使用語意化 HTML 標籤
-- 可加入 Open Graph tags
-- 可加入 Twitter Card tags
+- ✅ 已加入 canonical URL
+- ✅ 已加入 Open Graph tags
+- ✅ 已加入 Twitter Card tags
+- ✅ 已加入 sitemap.xml 與 robots.txt
 
 ## 📚 參考資源
 
@@ -142,4 +152,3 @@ open http://localhost:8000
 
 **建立日期**: 2025-12-30  
 **維護者**: @jakeuj
-

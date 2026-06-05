@@ -6,7 +6,7 @@
 
 ```bash
 # 確認在專案根目錄
-cd /Users/jakeuj/Documents/Projects/PoE
+cd /Users/jakeuj/Documents/GitHub/ChromeExtensionPobZh
 
 # 加入所有檔案（網站檔案已在 docs/ 資料夾）
 git add docs/
@@ -24,7 +24,7 @@ git push origin main
 
 ### 步驟 2: 啟用 GitHub Pages
 
-1. 前往 GitHub Repository: https://github.com/jakeuj/PoE
+1. 前往 GitHub Repository: https://github.com/jakeuj/ChromeExtensionPobZh
 2. 點擊 **Settings** (設定) 頁籤
 3. 在左側選單找到 **Pages**
 4. 在 **Build and deployment** 區域：
@@ -33,7 +33,7 @@ git push origin main
 
 ### 步驟 3: 等待自動部署
 
-1. 前往 **Actions** 頁籤: https://github.com/jakeuj/PoE/actions
+1. 前往 **Actions** 頁籤: https://github.com/jakeuj/ChromeExtensionPobZh/actions
 2. 查看 "Deploy GitHub Pages" workflow 執行狀態
 3. 等待部署完成（約 1-2 分鐘）
 4. 出現綠色勾勾 ✅ 表示部署成功！
@@ -42,7 +42,7 @@ git push origin main
 
 網站連結：
 ```
-https://jakeuj.github.io/PoE/
+https://poe.jakeuj.com/
 ```
 
 🎉 完成！您的專案網站已上線！
@@ -64,10 +64,10 @@ https://jakeuj.github.io/PoE/
 
 ### 📄 頁面區塊
 
-1. **Header** - Logo、導航連結、下載按鈕
+1. **Header** - Logo、導航連結、Chrome / Edge 商店安裝按鈕
 2. **Hero** - 主標題、徽章、CTA 按鈕、Demo 展示
 3. **Features** - 6 大功能特色卡片
-4. **Installation** - 5 步驟安裝指南 + 測試連結
+4. **Installation** - Chrome / Edge 商店安裝入口 + 開發者備用說明
 5. **Architecture** - Clean Architecture 圖表 + SOLID 原則
 6. **Documentation** - 4 個文件連結卡片
 7. **Footer** - 專案資訊、相關連結、開發者資訊
@@ -80,13 +80,15 @@ https://jakeuj.github.io/PoE/
 
 ```bash
 # 方法 1: 直接開啟檔案
-open index.html
+open docs/index.html
 
 # 方法 2: 使用 Python 啟動伺服器
+cd docs
 python3 -m http.server 8000
 # 然後開啟 http://localhost:8000
 
 # 方法 3: 使用 Node.js
+cd docs
 npx http-server -p 8000
 # 然後開啟 http://localhost:8000
 ```
@@ -132,7 +134,7 @@ npx http-server -p 8000
 5. ✅ 產生部署報告
 
 查看部署狀態：
-- Actions 頁面: https://github.com/jakeuj/PoE/actions
+- Actions 頁面: https://github.com/jakeuj/ChromeExtensionPobZh/actions
 - Workflow 檔案: `.github/workflows/deploy-pages.yml`
 
 ---
@@ -145,8 +147,8 @@ npx http-server -p 8000
 
 ```bash
 # 建立 CNAME 檔案
-echo "your-domain.com" > CNAME
-git add CNAME
+echo "poe.jakeuj.com" > docs/CNAME
+git add docs/CNAME
 git commit -m "feat: add custom domain"
 git push origin main
 ```
@@ -177,16 +179,21 @@ git push origin main
 - ✅ Meta description
 - ✅ 語意化 HTML
 - ✅ Alt 標籤
+- ✅ Canonical URL
+- ✅ Open Graph tags
+- ✅ Twitter Card tags
+- ✅ sitemap.xml
+- ✅ robots.txt
 
-可選加入：
+已加入 canonical、Open Graph 與 Twitter Card。範例：
 ```html
 <!-- Open Graph -->
 <meta property="og:title" content="PoE Ninja to Chronicles PoB Sharer">
-<meta property="og:description" content="Chrome 擴充套件 - 一鍵分享中文 PoB 連結">
-<meta property="og:image" content="https://jakeuj.github.io/PoE/src/icons/icon128.png">
+<meta property="og:description" content="Chrome / Edge 擴充套件 - 一鍵分享中文 PoB 連結">
+<meta property="og:image" content="https://poe.jakeuj.com/screenshot_1280x800.jpg">
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PoE Ninja to Chronicles PoB Sharer">
 ```
 
@@ -234,7 +241,9 @@ git push origin main
 - [ ] 已推送 `index.html`, `style.css`, `script.js` 到 GitHub
 - [ ] GitHub Pages 已啟用（Source: GitHub Actions）
 - [ ] Deploy workflow 執行成功
-- [ ] 網站可以正常存取 (https://jakeuj.github.io/PoE/)
+- [ ] 網站可以正常存取 (https://poe.jakeuj.com/)
+- [ ] sitemap.xml 可以正常存取 (https://poe.jakeuj.com/sitemap.xml)
+- [ ] robots.txt 可以正常存取 (https://poe.jakeuj.com/robots.txt)
 - [ ] 所有連結都正常運作
 - [ ] 圖示正確顯示
 - [ ] 響應式設計在手機上正常顯示
@@ -248,8 +257,12 @@ git push origin main
 
 ### 分享您的網站：
 ```
-https://jakeuj.github.io/PoE/
+https://poe.jakeuj.com/
 ```
+
+### 分享商店安裝連結：
+- Chrome Web Store: https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW
+- Microsoft Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng
 
 ### 下一步：
 1. ✅ 分享網站連結給使用者
@@ -261,4 +274,3 @@ https://jakeuj.github.io/PoE/
 
 **建立日期**: 2025-12-30  
 **完整文件**: [GITHUB_PAGES.md](GITHUB_PAGES.md)
-

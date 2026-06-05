@@ -2,10 +2,12 @@
 
 ## 專案概述
 
-已成功建立 Chrome 擴充套件：**PoE Ninja to Chronicles PoB Sharer**
+已成功建立 Chrome / Microsoft Edge 擴充套件：**PoE Ninja to Chronicles PoB Sharer**
 
 ### 功能
 在 poe.ninja **POE1 / POE2** 角色頁面自動注入「分享中文 PoB」按鈕，一鍵上傳 PoB 代碼到對應編年史（POE2 → poe2db.tw；POE1 → poedb.tw），建立中文 PoB 連結並複製到剪貼簿。
+
+官方網站與安裝入口：[https://poe.jakeuj.com/](https://poe.jakeuj.com/)
 
 ## 檔案清單
 
@@ -98,13 +100,21 @@ src/
 
 ## 安裝步驟
 
-### 快速安裝
+### 快速安裝（推薦）
 
-1. 開啟 Chrome：`chrome://extensions/`
+一般使用者請優先從瀏覽器商店安裝：
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+
+### 開發者備用安裝
+
+僅在本機開發測試或商店不可用時使用：
+
+1. 開啟 Chrome / Edge 擴充功能頁面
 2. 啟用「開發人員模式」
 3. 點擊「載入未封裝項目」
 4. 選擇 `src` 資料夾
-5. 完成！
 
 ### 測試
 
@@ -162,7 +172,7 @@ https://poe.ninja/poe1/profile/jakeuj-2332/character/從從容容游刀有餘
 ### 發布
 1. 完整測試
 2. 準備宣傳圖片
-3. 上傳到 Chrome Web Store
+3. 維護 Chrome Web Store 與 Microsoft Edge Add-ons 上架資訊
 
 ## 維護
 
@@ -190,4 +200,3 @@ cd src
 ---
 
 ✨ **專案已完成並可立即使用！**
-

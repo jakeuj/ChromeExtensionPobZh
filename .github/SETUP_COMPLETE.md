@@ -38,7 +38,7 @@ git tag v1.0.0
 git push origin v1.0.0
 
 # 3. 查看 GitHub Actions 執行狀態
-# 前往: https://github.com/jakeuj/PoE/actions
+# 前往: https://github.com/jakeuj/ChromeExtensionPobZh/actions
 ```
 
 ---
@@ -69,7 +69,13 @@ git push origin v1.0.0
 - 建立 ZIP 封裝檔案
 - 生成 Changelog
 - 建立 GitHub Release
-- 上傳 ZIP 檔案到 Release
+- 上傳 ZIP 檔案到 Release（開發者備用）
+
+一般使用者安裝入口：
+
+- [官方網站](https://poe.jakeuj.com/)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
 
 ---
 
@@ -109,7 +115,7 @@ git push origin v2.0.0
 6. 點擊 **Run workflow** 按鈕
 
 ### 檢視 CI 狀態
-- Actions 頁面: https://github.com/jakeuj/PoE/actions
+- Actions 頁面: https://github.com/jakeuj/ChromeExtensionPobZh/actions
 - README 徽章: 顯示即時狀態
 
 ---
@@ -181,7 +187,8 @@ git push origin v2.0.0
 
 ### 長期（專業）
 - [ ] 自動發布到 Chrome Web Store
-- [ ] 支援多瀏覽器發布（Firefox, Edge）
+- [ ] 自動發布到 Microsoft Edge Add-ons
+- [ ] 支援更多瀏覽器發布（Firefox 等）
 - [ ] 設定 CD pipeline 到生產環境
 
 ---
@@ -209,11 +216,10 @@ git push origin v2.0.0
 git tag v1.0.0 && git push origin v1.0.0
 ```
 
-就會自動建立 Release 並產生可下載的 ZIP 檔案！🚀
+就會自動建立 Release 並產生開發者備用 ZIP 檔案！🚀
 
 ---
 
 **祝您開發順利！** 🎉
 
 如有任何問題，請參考 `.github/CICD.md` 完整文件。
-

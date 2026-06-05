@@ -12,7 +12,7 @@ git tag v1.0.1
 git push origin v1.0.1
 
 # 3. 等待 GitHub Actions 完成
-# 前往 https://github.com/jakeuj/PoE/actions 查看進度
+# 前往 https://github.com/jakeuj/ChromeExtensionPobZh/actions 查看進度
 ```
 
 ## ✅ CI 檢查內容
@@ -31,12 +31,16 @@ git push origin v1.0.1
 - ZIP 檔案：`poe-ninja-pob-sharer-{version}.zip`
 - GitHub Release 頁面
 - 自動生成的 Changelog
+- ZIP 供開發者備用；一般使用者請透過 Chrome Web Store 或 Microsoft Edge Add-ons 安裝
 
 ## 🔗 相關連結
 
 - [完整 CI/CD 文件](.github/CICD.md)
-- [GitHub Actions](https://github.com/jakeuj/PoE/actions)
-- [Releases](https://github.com/jakeuj/PoE/releases)
+- [官方網站](https://poe.jakeuj.com/)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+- [GitHub Actions](https://github.com/jakeuj/ChromeExtensionPobZh/actions)
+- [Releases](https://github.com/jakeuj/ChromeExtensionPobZh/releases)
 
 ## 🐛 常用除錯指令
 
@@ -54,4 +58,3 @@ cat src/manifest.json | jq empty && echo "✓ Valid JSON"
 # 檢查檔案大小
 du -sh src/
 ```
-

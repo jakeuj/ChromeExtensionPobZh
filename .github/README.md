@@ -25,7 +25,7 @@ git push origin v1.0.0
 ```
 
 ### 手動觸發 CI
-前往 [GitHub Actions](https://github.com/jakeuj/PoE/actions)，選擇 workflow 並點擊 "Run workflow"。
+前往 [GitHub Actions](https://github.com/jakeuj/ChromeExtensionPobZh/actions)，選擇 workflow 並點擊 "Run workflow"。
 
 ## 📚 文件說明
 
@@ -60,11 +60,13 @@ git push origin v1.0.0
 
 ## 🔗 相關連結
 
-- [GitHub Actions 執行狀態](https://github.com/jakeuj/PoE/actions)
-- [Releases 頁面](https://github.com/jakeuj/PoE/releases)
+- [官方網站](https://poe.jakeuj.com/)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/poe-ninja-to-chronicles-p/aidenhnleibhchnhilkpbpkgeanmeedh?hl=zh-TW)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ilpjikgeonkegldnjdgpmcdiibmlabng)
+- [GitHub Actions 執行狀態](https://github.com/jakeuj/ChromeExtensionPobZh/actions)
+- [Releases 頁面](https://github.com/jakeuj/ChromeExtensionPobZh/releases)
 - [主專案 README](../README.md)
 
 ## 💡 提示
 
 首次使用請先閱讀 [SETUP_COMPLETE.md](SETUP_COMPLETE.md)！
-
